@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:29:52 by ilemos-c          #+#    #+#              #
-#    Updated: 2025/10/21 13:49:02 by ingrid           ###   ########.fr        #
+#    Updated: 2025/10/22 16:41:52 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = libft.a
 
 CC = cc
 INCLUDES = -I.
-FLAGS = -Wall -Wextra -Werror $(INCLUDES)
+CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 AR = ar rcs
 
 SRCS =	ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
@@ -49,24 +49,26 @@ OBJS_GNL = $(SRCS_GNL:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(OBJS_PRINTF) $(OBJS_GNL)
-	$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF) $(OBJS_GNL)
+	@$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF) $(OBJS_GNL)
 	@echo "✅ libft.a criada com sucesso!"
 
-%.o : %.c
-	$(CC) $(FLAGS) -c $< -o $@
+$(OBJS): libft.h
 
-bonus: $(OBJS) $(OBJS_BONUS)
-	$(AR) $(NAME) $(OBJS) $(OBJS_BONUS)
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
+
+bonus: $(OBJS_BONUS)
+	@$(AR) $(NAME) $(OBJS_BONUS)
 	@echo "✨ Bonus incluídos na libft.a!"
 
 clean:
-	rm -f $(OBJS) $(OBJS_BONUS) $(OBJS_PRINTF) $(OBJS_GNL)
+	@find . -type f -name '*.o' -exec rm -f {} +
 	@echo "🧹 Objetos removidos!"
 
 fclean: clean
-	rm -f $(NAME)
+	@rm -f $(NAME)
 	@echo "🗑️ libft.a removida!"
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

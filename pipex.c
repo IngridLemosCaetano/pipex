@@ -6,8 +6,14 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:36:21 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/21 13:49:44 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/22 11:44:08 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
+#include "libft/libft.h"
+
+void	imprimir(void)
+{
+	ft_printf("Seja Bem Vinda %s!", "Ingrid");
+}
