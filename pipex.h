@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:37:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/22 11:44:16 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/23 11:27:49 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 # include "libft/libft.h"
 
-void	imprimir(void);
+int	main(int argc, char *argv[]);
 
 #endif

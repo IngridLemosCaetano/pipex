@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 13:36:34 by ingrid            #+#    #+#              #
-#    Updated: 2025/10/22 16:33:22 by ingrid           ###   ########.fr        #
+#    Updated: 2025/10/23 11:45:45 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ $(OBJS): pipex.h
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OBJS)
+	@find . -type f -name '*.o' -exec rm -f {} +
 	@$(MAKE) -C $(LIBFT_DIR) clean
 	@echo "🧹 Objetos removidos!"
 
