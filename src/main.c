@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:35:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/29 12:40:47 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/29 17:03:59 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int	main(int argc, char *argv[], char *envp[])
 	// char	**cmd_part1;
 	if (argc != 5)
 	{
-		ft_printf("Invalid command, please try again.\n");
-		ft_printf("Ex: ./pipex infile \"ls -l\" \"wc -l\" outfile\n");
-		return (1);
+		ft_putstr_fd("Uso: ./pipex infile cmd1 cmd2 outfile\n", 2);
+		exit(1);
+		// ft_printf("Invalid command, please try again.\n");
+		// ft_printf("Ex: ./pipex infile \"ls -l\" \"wc -l\" outfile\n");
+		// return (1);
 	}
 	fd_infile = open(argv[1], O_RDONLY);
 	if (fd_infile < 0)
@@ -58,6 +60,7 @@ int	main(int argc, char *argv[], char *envp[])
 		dup2(pipe_fd[0], STDOUT_FILENO);
 		execute_cmd(argv[2], envp);
 	}
+	handle_first_cmd(pipe_fd, fd_infile, argv[2], envp);
 	return (0);
 }
 

@@ -6,7 +6,7 @@
 /*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:37:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/29 16:26:55 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2025/10/29 16:38:43 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ void	ft_free_array(char **array);
 void	execute_cmd(char *cmd_str, char *envp[]);
 void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str, char *envp[]);
 void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str, char *envp[]);
+void	error_exit(char *message);
 
 #endif
