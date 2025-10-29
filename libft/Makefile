@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/07/22 11:29:52 by ilemos-c          #+#    #+#              #
-#    Updated: 2025/10/22 16:41:52 by ingrid           ###   ########.fr        #
+#    Updated: 2025/10/29 12:39:18 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,18 +38,14 @@ SRCS_PRINTF =	ft_printf/ft_printf_basic.c \
 				ft_printf/ft_printf_unsigned_hex.c \
 				ft_printf/ft_printf.c
 
-SRCS_GNL =	get_next_line/get_next_line.c \
-			get_next_line/get_next_line_bonus.c
-
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 OBJS_PRINTF = $(SRCS_PRINTF:.c=.o)
-OBJS_GNL = $(SRCS_GNL:.c=.o)
 
 all: $(NAME)
 
-$(NAME): $(OBJS) $(OBJS_PRINTF) $(OBJS_GNL)
-	@$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF) $(OBJS_GNL)
+$(NAME): $(OBJS) $(OBJS_PRINTF)
+	@$(AR) $(NAME) $(OBJS) $(OBJS_PRINTF)
 	@echo "✅ libft.a criada com sucesso!"
 
 $(OBJS): libft.h

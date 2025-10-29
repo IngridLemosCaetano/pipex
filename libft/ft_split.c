@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/30 11:12:45 by ingrid            #+#    #+#             */
-/*   Updated: 2025/08/24 20:28:50 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/28 21:30:15 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,7 @@ static char	*ft_extract_word(char const **s_ptr, char c)
 	*s_ptr = s;
 	word = ft_substr(start, 0, len);
 	if (!word)
-	{
-		free (word);
 		return (NULL);
-	}
 	return (word);
 }
 

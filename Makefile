@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 13:36:34 by ingrid            #+#    #+#              #
-#    Updated: 2025/10/23 11:45:45 by ingrid           ###   ########.fr        #
+#    Updated: 2025/10/23 14:42:00 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ CFLAGS = -Wall -Wextra -Werror $(INCLUDES)
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
 
-SRCS = pipex.c
+SRCS = src/main.c src/pipex.c src/pipex_utils.c
 
 OBJS = $(SRCS:.c=.o)
 
@@ -32,7 +32,7 @@ $(NAME): $(OBJS) $(LIBFT)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -lft -o $(NAME)
 	@echo "✅ Executável pipex criado com sucesso!"
 
-$(OBJS): pipex.h
+$(OBJS): src/pipex.h
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $< -o $@
