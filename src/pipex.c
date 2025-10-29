@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:36:21 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/29 12:34:07 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/29 16:28:17 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-char	*find_full_command_path(char	*envp[], char	*cmd)
+char	*find_full_command_path(char *envp[], char *cmd)
 {
 	char	**paths_array;
 	char	*path_result;
@@ -41,7 +41,7 @@ char	*find_full_command_path(char	*envp[], char	*cmd)
 	return (NULL);
 }
 
-char	*ft_getenv(char	*envp[])
+char	*ft_getenv(char *envp[])
 {
 	int		i;
 	char	*path_key;
@@ -57,7 +57,7 @@ char	*ft_getenv(char	*envp[])
 	return (NULL);
 }
 
-char	*join_path_cmd(char	*path, char	*cmd)
+char	*join_path_cmd(char *path, char *cmd)
 {
 	char	*aux;
 	char	*path_cmd;
@@ -70,7 +70,7 @@ char	*join_path_cmd(char	*path, char	*cmd)
 	return (path_cmd);
 }
 
-void	ft_free_array(char	**array)
+void	ft_free_array(char **array)
 {
 	int	i;
 
@@ -85,7 +85,7 @@ void	ft_free_array(char	**array)
 	free(array);
 }
 
-void	execute_cmd(char	*cmd_str, char	*envp[])
+void	execute_cmd(char *cmd_str, char *envp[])
 {
 	char	**cmd_array;
 	char	*full_path;
