@@ -6,13 +6,14 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:38:23 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/30 13:18:56 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/30 15:06:59 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str, char *envp[])
+void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str,
+	char *envp[])
 {
 	pid_t	pid;
 
@@ -36,7 +37,8 @@ void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str, char *envp[])
 	close(pipe_fd[1]);
 }
 
-void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str, char *envp[])
+void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str,
+	char *envp[])
 {
 	pid_t	pid;
 

@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:35:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/30 14:04:51 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/10/30 14:35:31 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 5)
 	{
-		ft_putstr_fd("Uso: ./pipex infile cmd1 cmd2 outfile\n", 2);
+		ft_putstr_fd("Use: ./pipex infile \"cmd1\" \"cmd2\" outfile\n", 2);
 		exit(1);
 	}
 	fd_infile = open(argv[1], O_RDONLY);
@@ -37,6 +37,5 @@ int	main(int argc, char *argv[], char *envp[])
 	waitpid(-1, NULL, 0);
 	close(fd_infile);
 	close(fd_outfile);
-	ft_printf("pipex: success.\n");
 	return (0);
 }

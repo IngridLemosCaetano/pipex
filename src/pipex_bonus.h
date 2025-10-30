@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/21 13:37:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/30 15:08:29 by ingrid           ###   ########.fr       */
+/*   Created: 2025/10/30 15:04:06 by ingrid            #+#    #+#             */
+/*   Updated: 2025/10/30 15:19:14 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#ifndef PIPEX_BONUS_H
+# define PIPEX_BONUS_H
 
 # include "../libft/libft.h"
 # include <unistd.h>
@@ -26,10 +26,6 @@ char	*ft_getenv(char *envp[]);
 char	*join_path_cmd(char *path, char	*cmd);
 void	ft_free_array(char **array);
 void	execute_cmd(char *cmd_str, char *envp[]);
-void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str,
-			char *envp[]);
-void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str,
-			char *envp[]);
 void	error_exit(char *message);
 
 #endif
