@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:36:21 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/29 16:28:17 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2025/10/30 12:56:39 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,12 +99,12 @@ void	execute_cmd(char *cmd_str, char *envp[])
 		ft_printf("pipex: command not found: %s\n", cmd_array[0]);
 		ft_free_array(cmd_array);
 		exit(127);
-		if (execve(full_path, cmd_array, envp) == -1)
-		{
-			perror("execve failed\n");
-			ft_free_array(cmd_array);
-			free(full_path);
-			exit(1);
-		}
+	}
+	if (execve(full_path, cmd_array, envp) == -1)
+	{
+		perror("pipex: execve failed\n");
+		ft_free_array(cmd_array);
+		free(full_path);
+		exit(1);
 	}
 }

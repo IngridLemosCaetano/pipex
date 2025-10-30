@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:38:23 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/29 16:57:54 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2025/10/30 13:18:56 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@ void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str, char *envp[])
 	pid_t	pid;
 
 	pid = fork();
-	if (!pid)
+	if (pid < 0)
+	{
 		perror("pipex: fork fails for cmd1.");
+		exit(1);
+	}
 	if (pid == 0)
 	{
-		if (dup2(pipe_fd[0], STDOUT_FILENO) == -1)
+		if (dup2(pipe_fd[1], STDOUT_FILENO) == -1)
 			error_exit("pipex: dup2 STDOUT fails.");
 		if (dup2(fd_infile, STDIN_FILENO) == -1)
 			error_exit("pipex: dup2 STDIN fails.");
@@ -38,8 +41,11 @@ void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str, char *envp[
 	pid_t	pid;
 
 	pid = fork();
-	if (!pid)
+	if (pid < 0)
+	{
 		perror("pipex: fork fails for cmd2.");
+		exit(1);
+	}
 	if (pid == 0)
 	{
 		if (dup2(pipe_fd[0], STDIN_FILENO) == -1)
