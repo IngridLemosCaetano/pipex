@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 13:36:34 by ingrid            #+#    #+#              #
-#    Updated: 2025/10/31 13:20:00 by ingrid           ###   ########.fr        #
+#    Updated: 2025/10/31 16:10:50 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ clean:
 	@echo "🧹 Objetos removidos!"
 
 fclean: clean
-	@rm -f $(NAME)
+	@rm -f $(NAME) $(NAME_BONUS)
 	@$(MAKE) -C $(LIBFT_DIR) fclean
 	@echo "🗑️ Executáveis pipex e pipex_bonus removidos!"
 
