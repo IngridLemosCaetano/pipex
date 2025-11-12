@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:35:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 14:48:25 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 17:12:49 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	main(int argc, char *argv[], char *envp[])
 
 	if (argc != 5)
 	{
-		ft_putstr_fd("Not enough arguments.\n", 2);
+		ft_putstr_fd("pipex: not enough arguments.\n", 2);
 		exit(1);
 	}
 	fd_infile = open(argv[1], O_RDONLY);

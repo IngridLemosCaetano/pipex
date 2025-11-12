@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:16:00 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 14:48:53 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 17:11:51 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,57 +40,43 @@ void	child_pipeline_process(int fd_in, int fd_out, char *cmd,
 	execute_cmd(cmd, envp);
 }
 
-// void	pipe_child(int **fd_in_out_i_ncmd, int *pipe_fd, char *cmd_list[],
-// 	char *envp[])
-// {
-// 	int	fd_in;
-// 	int	fd_out;
-
-// 	if (fd_in_out_i_ncmd[0][3] == fd_in_out_i_ncmd[1][0] - 1)
-// 	{
-// 		fd_out = fd_in_out_i_ncmd[0][1];
-// 		close(pipe_fd[1]);
-// 	}
-// 	else
-// 		fd_out = pipe_fd[1];
-// 	close(pipe_fd[0]);
-// 	child_pipeline_process(data[FD_IN], fd_out, data[IDX_CMD], envp);
-// 	exit(1);
-// }
-
 void	handle_pipeline(char *cmd_list[], int data[], char *envp[])
 {
-	int		pipe_fd[2];
-	pid_t	pid;
-	int		fd_out;
-
 	while (data[IDX_CMD] < data[IDX_MAX])
 	{
-		if (data[IDX_CMD] < data[IDX_MAX] - 1)
-		{
-			if (pipe(pipe_fd) == -1)
-				error_exit("pipex: pipe fail.");
-			fd_out = pipe_fd[1];
-		}
-		else
-			fd_out = data[FD_OUT];
-		pid = fork();
-		if (pid == -1)
-			error_exit("pipex: fork fail.");
-		if (pid == 0)
-		{
-			if (data[IDX_CMD] < data[IDX_MAX] -1)
-				close(pipe_fd[0]);
-			child_pipeline_process(data[FD_CURR], fd_out,
-				cmd_list[data[IDX_CMD]], envp);
-		}
-		close(data[FD_CURR]);
-		if (data[IDX_CMD] < data[IDX_MAX] -1)
-		{
-			close(pipe_fd[1]);
-			data[FD_CURR] = pipe_fd[0];
-		}
+		process_command(cmd_list[data[IDX_CMD]], data, envp);
 		data[IDX_CMD]++;
 	}
 	close(data[FD_CURR]);
+}
+
+static void	process_command(char *cmd, int data[], char *envp[])
+{
+	int		pipe_fd[2];
+	int		fd_out;
+	pid_t	pid;
+
+	if (data[IDX_CMD] < data[IDX_MAX] - 1)
+	{
+		if (pipe(pipe_fd) == -1)
+			error_exit("pipex: pipe fail.");
+		fd_out = pipe_fd[1];
+	}
+	else
+		fd_out = data[FD_OUT];
+	pid = fork();
+	if (pid == -1)
+		error_exit("pipex: fork fail.");
+	if (pid == 0)
+	{
+		if (data[IDX_CMD] < data[IDX_MAX] -1)
+			close(pipe_fd[0]);
+		child_pipeline_process(data[FD_CURR], fd_out, cmd, envp);
+	}
+	close(data[FD_CURR]);
+	if (data[IDX_CMD] < data[IDX_MAX] - 1)
+	{
+		close(pipe_fd[1]);
+		data[FD_CURR] = pipe_fd[0];
+	}
 }
