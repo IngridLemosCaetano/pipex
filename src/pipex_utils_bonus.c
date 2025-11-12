@@ -6,17 +6,11 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:16:00 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 17:11:51 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 17:24:01 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/pipex_bonus.h"
-
-void	error_exit(char *message)
-{
-	perror(message);
-	exit(1);
-}
 
 void	open_files(char *argv[], int argc, int *data)
 {
@@ -40,14 +34,14 @@ void	child_pipeline_process(int fd_in, int fd_out, char *cmd,
 	execute_cmd(cmd, envp);
 }
 
-void	handle_pipeline(char *cmd_list[], int data[], char *envp[])
+static void	process_cleanup(int data[], int pipe_fd[2])
 {
-	while (data[IDX_CMD] < data[IDX_MAX])
-	{
-		process_command(cmd_list[data[IDX_CMD]], data, envp);
-		data[IDX_CMD]++;
-	}
 	close(data[FD_CURR]);
+	if (data[IDX_CMD] < data[IDX_MAX] - 1)
+	{
+		close(pipe_fd[1]);
+		data[FD_CURR] = pipe_fd[0];
+	}
 }
 
 static void	process_command(char *cmd, int data[], char *envp[])
@@ -73,10 +67,15 @@ static void	process_command(char *cmd, int data[], char *envp[])
 			close(pipe_fd[0]);
 		child_pipeline_process(data[FD_CURR], fd_out, cmd, envp);
 	}
-	close(data[FD_CURR]);
-	if (data[IDX_CMD] < data[IDX_MAX] - 1)
+	process_cleanup(data, pipe_fd);
+}
+
+void	handle_pipeline(char *cmd_list[], int data[], char *envp[])
+{
+	while (data[IDX_CMD] < data[IDX_MAX])
 	{
-		close(pipe_fd[1]);
-		data[FD_CURR] = pipe_fd[0];
+		process_command(cmd_list[data[IDX_CMD]], data, envp);
+		data[IDX_CMD]++;
 	}
+	close(data[FD_CURR]);
 }

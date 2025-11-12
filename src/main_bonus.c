@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:11:58 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 13:36:30 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 17:22:20 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,10 @@ int	main(int argc, char *argv[], char *envp[])
 	{
 	}
 	return (0);
+}
+
+void	error_exit(char *message)
+{
+	perror(message);
+	exit(1);
 }
