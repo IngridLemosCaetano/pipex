@@ -6,11 +6,11 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:36:21 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 11:31:00 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 14:55:24 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../inc/pipex.h"
 
 char	*find_full_command_path(char *envp[], char *cmd)
 {

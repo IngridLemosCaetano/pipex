@@ -6,11 +6,11 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:16:00 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 12:40:08 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 14:48:53 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../inc/pipex_bonus.h"
 
 void	error_exit(char *message)
 {

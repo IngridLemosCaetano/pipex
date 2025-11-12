@@ -6,11 +6,11 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:38:23 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/30 15:06:59 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 14:49:10 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "../inc/pipex.h"
 
 void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str,
 	char *envp[])
