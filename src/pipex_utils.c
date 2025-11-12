@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:38:23 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 14:49:10 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 20:08:06 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ void	handle_first_cmd(int *pipe_fd, int fd_infile, char *cmd1_str,
 
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("pipex: fork fails for cmd1.");
-		exit(1);
-	}
+		error_exit("pipex: fork fails for cmd1.");
 	if (pid == 0)
 	{
 		if (dup2(pipe_fd[1], STDOUT_FILENO) == -1)
@@ -44,10 +41,7 @@ void	handle_second_cmd(int *pipe_fd, int fd_outfile, char *cmd2_str,
 
 	pid = fork();
 	if (pid < 0)
-	{
-		perror("pipex: fork fails for cmd2.");
-		exit(1);
-	}
+		error_exit("pipex: fork fails for cmd2.");
 	if (pid == 0)
 	{
 		if (dup2(pipe_fd[0], STDIN_FILENO) == -1)

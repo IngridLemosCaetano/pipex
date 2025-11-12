@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/23 12:35:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 17:12:49 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 20:06:02 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[], char *envp[])
 	fd_infile = open(argv[1], O_RDONLY);
 	fd_outfile = open(argv[4], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (fd_infile < 0 || fd_outfile < 0)
-		error_exit("pipex");
+		error_exit("pipex: was not possible open file.");
 	if (pipe(pipe_fd) == -1)
 		error_exit("pipex: pipe fails.");
 	handle_first_cmd(pipe_fd, fd_infile, argv[2], envp);
@@ -35,7 +35,5 @@ int	main(int argc, char *argv[], char *envp[])
 	close(fd_outfile);
 	waitpid(-1, NULL, 0);
 	waitpid(-1, NULL, 0);
-	close(fd_infile);
-	close(fd_outfile);
 	return (0);
 }

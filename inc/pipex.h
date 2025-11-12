@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:37:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 14:54:36 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 20:03:41 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define PIPEX_H
 
 # include "../lib/libft/inc/libft.h"
-# include "../lib/libft/inc/ft_printf.h"
 # include <fcntl.h>
 # include <sys/wait.h>
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:16:00 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 17:24:01 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 20:06:50 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ void	open_files(char *argv[], int argc, int *data)
 {
 	data[FD_IN] = open(argv[1], O_RDONLY);
 	if (data[FD_IN] < 0)
-		error_exit(argv[1]);
+		error_exit("pipex: was not possible open infile.");
 	data[FD_OUT] = open(argv[argc - 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (data[FD_OUT] < 0)
-		error_exit(argv[argc - 1]);
+		error_exit("pipex: was not possible open/create/truncate the outfile");
 }
 
 void	child_pipeline_process(int fd_in, int fd_out, char *cmd,
