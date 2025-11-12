@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:10:47 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/30 15:18:24 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 11:33:47 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,11 +100,9 @@ void	execute_cmd(char *cmd_str, char *envp[])
 		ft_free_array(cmd_array);
 		exit(127);
 	}
-	if (execve(full_path, cmd_array, envp) == -1)
-	{
-		perror("pipex: execve failed\n");
-		ft_free_array(cmd_array);
-		free(full_path);
-		exit(1);
-	}
+	execve(full_path, cmd_array, envp);
+	perror("pipex: execve failed\n");
+	ft_free_array(cmd_array);
+	free(full_path);
+	exit(1);
 }

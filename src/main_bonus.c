@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:11:58 by ingrid            #+#    #+#             */
-/*   Updated: 2025/10/31 13:36:09 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/12 12:26:28 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 int	main(int argc, char *argv[], char *envp[])
 {
-	// int	fd_infile;
-	// int	fd_outfile;
-	int	fd_in_out[2];
-	int	num_cmds;
+	int	data[5];
 
-	num_cmds = argc - 3;
 	if (argc < 5)
 	{
-		ft_putstr_fd("Use: ./pipex infile \"cmd1\" \"cmd2\" \"cmdN\" outfile\n", 2);
+		ft_putstr_fd("Use: ./pipex infile \"cmd1\" \"cmd2\" \"cmdN\" ", 2);
+		ft_putstr_fd("outfile\n", 2);
 		return (1);
 	}
 	if (ft_strncmp(argv[1], "here_doc", 8) == 0)
@@ -30,10 +27,15 @@ int	main(int argc, char *argv[], char *envp[])
 		ft_putstr_fd("This program does not support here_doc.\n", 2);
 		return (1);
 	}
-	open_files(argv, argc, fd_in_out);
-	handle_pipeline(&argv[2], num_cmds, fd_in_out, envp);
-	close(fd_in_out[0]);
-	close(fd_in_out[1]);
-	while (wait(NULL) > 0);
+	open_files(argv, argc, data);
+	data[IDX_CMD] = 0;
+	data[IDX_MAX] = argc - 3;
+	data[FD_CURR] = data[0];
+	handle_pipeline(&argv[2], data, envp);
+	close(data[0]);
+	close(data[1]);
+	while (wait(NULL) > 0)
+	{
+	}
 	return (0);
 }
