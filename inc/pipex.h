@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/21 13:37:19 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 20:03:41 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2025/11/13 11:21:06 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../lib/libft/inc/libft.h"
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 int		main(int argc, char *argv[], char *envp[]);
 char	*find_full_command_path(char *envp[], char *cmd);

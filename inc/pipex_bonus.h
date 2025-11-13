@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_bonus.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:04:06 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 20:04:53 by ilemos-c         ###   ########.fr       */
+/*   Updated: 2025/11/13 11:27:28 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../lib/libft/inc/libft.h"
 # include <fcntl.h>
 # include <sys/wait.h>
+# include <errno.h>
 
 # define FD_IN 0
 # define FD_OUT 1

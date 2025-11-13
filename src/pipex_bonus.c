@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:10:47 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 14:48:38 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/13 11:26:54 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	execute_cmd(char *cmd_str, char *envp[])
 	full_path = find_full_command_path(envp, cmd_array[0]);
 	if (!full_path)
 	{
-		ft_printf("pipex: command not found: %s\n", cmd_array[0]);
+		ft_printf("%s: %s\n", cmd_array[0], strerror(errno));
 		ft_free_array(cmd_array);
 		exit(127);
 	}
