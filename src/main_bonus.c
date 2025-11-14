@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ilemos-c <ilemos-c@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/30 15:11:58 by ingrid            #+#    #+#             */
-/*   Updated: 2025/11/12 17:22:20 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/11/14 12:06:56 by ilemos-c         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ int	main(int argc, char *argv[], char *envp[])
 	open_files(argv, argc, data);
 	data[IDX_CMD] = 0;
 	data[IDX_MAX] = argc - 3;
-	data[FD_CURR] = data[0];
+	data[FD_CURR] = data[FD_IN];
 	handle_pipeline(&argv[2], data, envp);
-	close(data[0]);
-	close(data[1]);
+	close(data[FD_IN]);
+	close(data[FD_OUT]);
 	while (wait(NULL) > 0)
 	{
 	}
