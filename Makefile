@@ -6,7 +6,7 @@
 #    By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/21 13:36:34 by ingrid            #+#    #+#              #
-#    Updated: 2025/11/12 15:04:21 by ingrid           ###   ########.fr        #
+#    Updated: 2025/12/17 21:11:47 by ingrid           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,6 @@ LIBFT = $(LIBFT_DIR)/libft.a
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 INCLUDES = -I$(INC_DIR) -I$(LIBFT_DIR)/inc
-LIBS = -L$(LIBFT_DIR) -lft
 
 SRCS = $(SRC_DIR)/main.c $(SRC_DIR)/pipex.c $(SRC_DIR)/pipex_utils.c
 SRCS_BONUS = $(SRC_DIR)/main_bonus.c $(SRC_DIR)/pipex_bonus.c $(SRC_DIR)/pipex_utils_bonus.c
@@ -39,30 +38,25 @@ $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
 	@echo "📁 Created obj directory"
 
-$(LIBFT):
-	@$(MAKE) -C $(LIBFT_DIR)
-
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INC_DIR)/pipex.h
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 	@echo "Compiled $< → $@"
 
-$(NAME): $(OBJ_DIR) $(LIBFT) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $@
+$(NAME): $(OBJ_DIR) $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) -o $@
 	@echo "✅ Created $(NAME)"
 
-$(NAME_BONUS): $(OBJ_DIR) $(LIBFT) $(OBJS_BONUS)
-	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBS) -o $@
+$(NAME_BONUS): $(OBJ_DIR) $(OBJS_BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(LIBFT) -o $@
 	@echo "🌟 Created $(NAME_BONUS)"
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@$(MAKE) -C $(LIBFT_DIR) clean
 	@echo "🧹 Removed object files and obj directory"
 
 fclean: clean
 	@rm -f $(NAME) $(NAME_BONUS)
-	@$(MAKE) -C $(LIBFT_DIR) fclean
-	@echo "🗑️ Removed executables and libft"
+	@echo "🗑️ Removed executables"
 
 re: fclean all
 

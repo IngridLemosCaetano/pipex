@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/22 12:00:14 by ilemos-c          #+#    #+#             */
-/*   Updated: 2025/11/12 13:09:13 by ingrid           ###   ########.fr       */
+/*   Created: 2025/08/08 21:09:05 by ingrid            #+#    #+#             */
+/*   Updated: 2025/11/13 12:29:47 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
-	return (0);
-}
-/*
-int	main(void)
-{
-	int	n1 = 0;
-	int	n2 = 9;
-	int	n3 = '0';
-	int	n4 = 'c';
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
-	printf("%d\n", ft_isdigit(n1));
-	printf("%d\n", ft_isdigit(n2));
-	printf("%d\n", ft_isdigit(n3));
-	printf("%d\n", ft_isdigit(n4));
-}*/
+# include <fcntl.h>
+# include "libft.h"
+
+char	*get_next_line(int fd);
+
+#endif

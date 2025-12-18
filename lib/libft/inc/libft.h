@@ -6,7 +6,7 @@
 /*   By: ingrid <ingrid@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/22 11:28:23 by ilemos-c          #+#    #+#             */
-/*   Updated: 2025/11/12 13:09:56 by ingrid           ###   ########.fr       */
+/*   Updated: 2025/12/17 21:18:15 by ingrid           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <bsd/string.h>
 # include <stdint.h>
 # include "ft_printf.h"
+# include "get_next_line.h"
 
 typedef struct s_list
 {
