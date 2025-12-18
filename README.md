@@ -7,21 +7,39 @@
 
 O <strong>pipex</strong> faz parte da grade da Escola 42 (Milestone 2).
 
-O projeto consiste em lidar com pipes.
+O projeto consiste em reproduzir o comportamento do operador | (pipe) do shell, permitindo encadear a saída de um comando como entrada de outro, utilizando as chamadas de sistema em C.
+
+Na prática o programa deve executar algo equivalente a:
+
+		< infile cmd1 | cmd2 > outfile
+Utilizando o programa:
+
+		./pipex infile "cmd1" "cmd2" outfile
+
+## 🧠 Conceitos utilizados
+
+- Processos (fork)
+- Comunicação entre processos (pipe)
+- Redirecionamento de arquivos (dup2)
+- Execução de comandos (execve)
+- Manipulação de erros
+- Variáveis de ambiente (PATH)
 
 
+## ⚙️ Funcionamento
 
-## 📌 Objetivo do Projeto
+O programa recebe 4 argumentos:
 
-- reproduzir o comportamento do pipe.
+		./pipex infile cmd1 cmd2 outfile
+-	**infile**: arquivo de entrada.
+-	**cmd1**: primeiro comando a ser executado.
+-	**cmd2**: segundo comando a ser executado.
+-	**outfile**: arquivo de saída.
 
-		./pipex arquivo1 comando1 comando2 arquivo2
-
-
-## 🧩 Regras
-
-- o programa deve receber 4 argumentos.
-
+**Fluxo:**
+1. O conteúdo de infile é passado para cmd1
+2. A saída de cmd1 é redirecionada para cmd2 através de um pipe.
+3. A saída de cmd2 é escrita em outfile
 
 
 ## 📁 Estrutura do Projeto
@@ -61,14 +79,18 @@ pipex/ <br>
        make fclean
 
 ## ▶️ Execução
+**Execução obrigatória**
 
-Após compilar, execute o programa < arquivo1 comando1 | comando2 > arquivo2:
+    	./pipex infile "ls -l" "wc -l" outfile
 
-- arquivo1 e arquivo2 são **nomes de arquivos**
+**⭐ Bônus – múltiplos pipes**
 
-- comado1 e comando2 são **comandos shell** com seus parâmetros.
+O programa também suporta múltiplos comandos encadeados, reproduzindo o comportamento do shell com vários pipes:
 
-    ./pipex infile "ls -l" "wc -l" outfile
+		< infile cmd1 | cmd2 | cmd3 | ... | cmdn > outfile
+Utilizando o pipex_bonus:		
+
+  		./pipex_bonus infile "cat" "grep que" "tr a-z A-Z" outfile
 
 
 ## ✅ Grade ✅
